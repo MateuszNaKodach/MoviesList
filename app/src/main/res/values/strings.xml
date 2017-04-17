@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Movies</string>
+
+
+
+    <string-array name="starwars_movies">
+        <item>Phantom Menace</item>
+        <item>Star Wars: Episode II</item>
+        <item>Revenge of the Sith</item>
+        <item>Star Wars: Episode IV</item>
+        <item>The Empire Strikes Back</item>
+        <item>Return of the Jedi</item>
+        <item>The Force Awakens</item>
+        <item>Rogue One</item>
+    </string-array>
+</resources>
