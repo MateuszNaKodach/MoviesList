@@ -12,7 +12,6 @@ import retrofit2.Call
 object MoviesCalls {
 
     fun getMovieByTitle(title:String): Single<Movie>{
-        return RetrofitHelper().getMoviesService()!!.getMovieByTitle(title).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+        return RetrofitHelper().getMoviesService()!!.getMovieByTitle(title)
     }
 }

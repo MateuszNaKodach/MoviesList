@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Movies</string>
-
+    <string name="internet_permission_request">Internet permission needed</string>
+    <string name="internet_permission_body">Please confirm internet access</string>
+    <string name="download_error">Movies download error, please try later.</string>
 
 
     <string-array name="starwars_movies">

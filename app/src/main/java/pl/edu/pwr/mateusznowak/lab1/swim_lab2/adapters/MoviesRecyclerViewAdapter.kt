@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.movie_list_row.view.*
+import kotlinx.android.synthetic.main.movie_list_row_left.view.*
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.R
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.models.Movie
 
@@ -16,13 +16,28 @@ import pl.edu.pwr.mateusznowak.lab1.swim_lab2.models.Movie
  */
 class MoviesRecyclerViewAdapter(val moviesList:List<Movie>) : RecyclerView.Adapter<MoviesRecyclerViewAdapter.MovieViewHolder>() {
 
+    companion object{
+        val MOVIE_ITEM_LEFT_VIEW_TYPE = 1;
+        val MOVIE_ITEM_RIGHT_VIEW_TYPE = 2;
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder {
+
+        val itemLayoutId:Int =
+                if(viewType == MOVIE_ITEM_LEFT_VIEW_TYPE)
+                    R.layout.movie_list_row_left
+                else
+                    R.layout.movie_list_row_right
+
         val itemView = LayoutInflater
                 .from(parent?.context)
-                .inflate(R.layout.movie_list_row, parent,false)
+                .inflate(itemLayoutId, parent,false)
 
         return MovieViewHolder(itemView)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if(position%2==0) MOVIE_ITEM_LEFT_VIEW_TYPE else MOVIE_ITEM_RIGHT_VIEW_TYPE
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
