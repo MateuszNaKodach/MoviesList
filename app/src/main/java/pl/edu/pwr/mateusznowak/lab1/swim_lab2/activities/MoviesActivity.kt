@@ -23,6 +23,7 @@ import pl.edu.pwr.mateusznowak.lab1.swim_lab2.models.Movie
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.retrofit.MoviesCalls
 import android.support.v7.widget.helper.ItemTouchHelper.Callback.makeMovementFlags
 import android.view.MotionEvent
+import pl.edu.pwr.mateusznowak.lab1.swim_lab2.MoviesApp
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.dagger.DaggerMoviesComponent
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.dagger.MoviesComponent
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.dagger.MoviesModule
@@ -36,8 +37,6 @@ class MoviesActivity : AppCompatActivity() {
     companion object {
         private val INTERNET_PERMISSION_CODE = 1
     }
-
-    val moviesComponent:MoviesComponent = DaggerMoviesComponent.builder().moviesModule(MoviesModule()).build()
 
     @Inject
     lateinit var moviesHelper:MoviesHelper
@@ -56,7 +55,7 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun initDaggerDependencyInjection() {
-        moviesComponent.inject(this)
+        MoviesApp.moviesComponent.inject(this)
         moviesAdapter = MoviesRecyclerViewAdapter(moviesHelper.moviesList)
     }
 
