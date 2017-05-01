@@ -23,6 +23,7 @@ import pl.edu.pwr.mateusznowak.lab1.swim_lab2.models.Movie
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.retrofit.MoviesCalls
 import android.support.v7.widget.helper.ItemTouchHelper.Callback.makeMovementFlags
 import android.view.MotionEvent
+import kotlinx.android.synthetic.main.movie_list_row_right.*
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.MoviesApp
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.dagger.DaggerMoviesComponent
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.dagger.MoviesComponent
@@ -46,10 +47,8 @@ class MoviesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
-
         initDaggerDependencyInjection()
         showMoviesDataIfExists()
-
         initMoviesSwipeRefreshLayout()
         initMoviesRecyclerView()
     }
@@ -64,25 +63,33 @@ class MoviesActivity : AppCompatActivity() {
         rv_movies.adapter = moviesAdapter
         rv_movies.addOnItemTouchListener(RecyclerTouchListener(applicationContext,rv_movies,object: RecyclerTouchListener.ClickListener {
             override fun onClick(view: View?, position: Int) {
-                /*val intent = Intent(applicationContext, javaClass)
-                intent.putExtra(MovieDetailsActivity.MOVIE_TITLE_EXTRA,moviesList[position].title)
-                startActivity(intent)*/
+                val intent = Intent(applicationContext, javaClass)
+                intent.putExtra(MovieDetailsActivity.MOVIE_POSITION_EXTRA,position)
+                startActivity(intent)
             }
 
             override fun onLongClick(view: View?, position: Int) {
-                //moviesAdapter.toggleLongClickIcon(position);
+                toggleMovieLongClickIconVisibility(view)
             }
 
         }))
 
         ItemTouchHelper(BaseItemTouchHelperCallback(moviesAdapter)).attachToRecyclerView(rv_movies)
+    }
 
+    private fun toggleMovieLongClickIconVisibility(view: View?) {
+        val longClickIcon: View? = view?.findViewById(R.id.iv_longClick)
+        if(longClickIcon?.visibility == View.VISIBLE) {
+            longClickIcon.visibility = View.GONE
+        }else {
+            longClickIcon?.visibility = View.VISIBLE
+        }
     }
 
     private fun initMoviesSwipeRefreshLayout() {
         srl_movies.setOnRefreshListener {
             srl_movies.isRefreshing=true
-            showMoviesDataIfExists()
+            moviesAdapter.notifyDataSetChanged()
             srl_movies.isRefreshing=false
         }
     }

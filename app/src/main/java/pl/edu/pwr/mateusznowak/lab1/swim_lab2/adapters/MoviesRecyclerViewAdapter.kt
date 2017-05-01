@@ -62,19 +62,6 @@ class MoviesRecyclerViewAdapter(val moviesList:MutableList<Movie>) :
 
     override fun getItemCount() = moviesList.size
 
-    override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        if (fromPosition < toPosition) {
-            for (i in fromPosition..toPosition - 1) {
-                Collections.swap(moviesList, i, i + 1)
-            }
-        } else {
-            for (i in fromPosition downTo toPosition + 1) {
-                Collections.swap(moviesList, i, i - 1)
-            }
-        }
-        notifyItemMoved(fromPosition, toPosition)
-    }
-
     override fun onItemDismiss(position: Int) {
         moviesList.removeAt(position);
         notifyItemRemoved(position);
