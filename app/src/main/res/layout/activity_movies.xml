@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pl.edu.pwr.mateusznowak.lab1.swim_lab2.activities.MainActivity">
+    tools:context="pl.edu.pwr.mateusznowak.lab1.swim_lab2.activities.MoviesActivity">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl_movies"

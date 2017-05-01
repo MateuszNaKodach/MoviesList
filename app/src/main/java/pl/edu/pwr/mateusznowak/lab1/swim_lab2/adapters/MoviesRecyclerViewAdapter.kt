@@ -3,18 +3,24 @@ package pl.edu.pwr.mateusznowak.lab1.swim_lab2.adapters
 import android.content.Context
 import android.net.Uri
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
+import android.support.v7.widget.helper.ItemTouchUIUtil
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_list_row_left.view.*
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.R
+import pl.edu.pwr.mateusznowak.lab1.swim_lab2.helpers.ItemTouchHelperAdapter
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.models.Movie
+import java.util.*
 
 /**
  * Created by Mateusz on 17.04.2017.
  */
-class MoviesRecyclerViewAdapter(val moviesList:List<Movie>) : RecyclerView.Adapter<MoviesRecyclerViewAdapter.MovieViewHolder>() {
+class MoviesRecyclerViewAdapter(val moviesList:MutableList<Movie>) :
+        RecyclerView.Adapter<MoviesRecyclerViewAdapter.MovieViewHolder>(),
+        ItemTouchHelperAdapter {
 
     companion object{
         val MOVIE_ITEM_LEFT_VIEW_TYPE = 1;
@@ -55,6 +61,24 @@ class MoviesRecyclerViewAdapter(val moviesList:List<Movie>) : RecyclerView.Adapt
     }
 
     override fun getItemCount() = moviesList.size
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        if (fromPosition < toPosition) {
+            for (i in fromPosition..toPosition - 1) {
+                Collections.swap(moviesList, i, i + 1)
+            }
+        } else {
+            for (i in fromPosition downTo toPosition + 1) {
+                Collections.swap(moviesList, i, i - 1)
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemDismiss(position: Int) {
+        moviesList.removeAt(position);
+        notifyItemRemoved(position);
+    }
 
     class MovieViewHolder(view:View) : RecyclerView.ViewHolder(view)
 }
