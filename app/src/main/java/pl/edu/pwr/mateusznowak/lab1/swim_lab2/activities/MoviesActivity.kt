@@ -63,7 +63,7 @@ class MoviesActivity : AppCompatActivity() {
         rv_movies.adapter = moviesAdapter
         rv_movies.addOnItemTouchListener(RecyclerTouchListener(applicationContext,rv_movies,object: RecyclerTouchListener.ClickListener {
             override fun onClick(view: View?, position: Int) {
-                val intent = Intent(applicationContext, javaClass)
+                val intent = Intent(applicationContext, MovieDetailsActivity::class.java)
                 intent.putExtra(MovieDetailsActivity.MOVIE_POSITION_EXTRA,position)
                 startActivity(intent)
             }
