@@ -10,7 +10,7 @@ import pl.edu.pwr.mateusznowak.lab1.swim_lab2.dagger.MoviesModule
 /**
  * Created by Mateusz on 17.04.2017.
  */
-class MoviesApp() : Application() {
+class MoviesApp : Application() {
 
     companion object{
         lateinit var moviesComponent: MoviesComponent
