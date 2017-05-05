@@ -20,7 +20,7 @@ import javax.inject.Inject
 class MoviesActivity : AppCompatActivity() {
 
     companion object {
-        private val INTERNET_PERMISSION_CODE = 1
+        const private val INTERNET_PERMISSION_CODE = 1
     }
 
     @Inject
@@ -31,7 +31,6 @@ class MoviesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
-        actionBar.setDisplayHomeAsUpEnabled(true)
 
         initDaggerDependencyInjection()
         showMoviesDataIfExists()

@@ -8,6 +8,7 @@ import pl.edu.pwr.mateusznowak.lab1.swim_lab2.MoviesApp
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.R
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.adapters.BaseFragmentPagerAdapter
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.fragments.MainMovieInfoFragment
+import pl.edu.pwr.mateusznowak.lab1.swim_lab2.fragments.MovieInfoFragment
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.helpers.MoviesHelper
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.models.Movie
 import java.util.*
@@ -16,8 +17,7 @@ import javax.inject.Inject
 class MovieDetailsActivity : AppCompatActivity() {
 
     companion object{
-        val MOVIE_POSITION_EXTRA = "pl.edu.pwr.mateusznowak.lab1.swim_lab2.MOVIE_POSITION_EXTRA";
-        val MOVIE_TITLE_ARG = "pl.edu.pwr.mateusznowak.lab1.swim_lab2.MOVIE_TITLE_ARG";
+        const val MOVIE_POSITION_EXTRA = "pl.edu.pwr.mateusznowak.lab1.swim_lab2.MOVIE_POSITION_EXTRA";
     }
 
     @Inject
@@ -54,6 +54,6 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun initViewPager(){
         vp_movieDetailsPager.adapter = BaseFragmentPagerAdapter(
                 supportFragmentManager,
-                Arrays.asList(MainMovieInfoFragment.newInstance(movie.title)))
+                Arrays.asList(MovieInfoFragment.newInstance(MainMovieInfoFragment::class.java,movie.title)))
     }
 }
