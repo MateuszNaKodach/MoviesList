@@ -41,7 +41,7 @@ class MoviesHelper{
     val dummyMoviesUrls = Arrays.asList(
                 "http://www.planwallpaper.com/static/images/bored-star-wars-vii-650.jpg",
                 "http://www.planwallpaper.com/static/images/star_wars_battlefront_dice.0.jpg",
-                "https://secure.parksandresorts.wdpromedia.com/resize/mwImage/1/630/354/75/wdpromedia.disney.go.com/media/wdpro-assets/parks-and-tickets/tours-and-experiences/star-wars-guided-tour/star-wars-guided-tour-00.jpg?21102016062907",
+                "https://s-media-cache-ak0.pinimg.com/originals/3d/2b/c4/3d2bc4e6e030b4ca340652d1b7ff121a.jpg",
                 "https://s-media-cache-ak0.pinimg.com/736x/76/b6/a4/76b6a4239e100bcffe2a0d53fdacbffd.jpg",
                 "https://s.aolcdn.com/hss/storage/midas/d07f8419800faacf4ed586ccfb5d6812/203345880/image.jpg",
                 "http://www.kulturalnaplaneta.pl/wp-content/uploads/2016/01/rendition1.img_-1.jpg")

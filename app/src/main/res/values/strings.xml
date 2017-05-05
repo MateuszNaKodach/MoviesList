@@ -20,4 +20,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="plot">Plot</string>
     <string name="rating">rating</string>
+    <string name="director">director</string>
+    <string name="genre">genre</string>
+    <string name="year">year</string>
 </resources>

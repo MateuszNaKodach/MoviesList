@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_movies.*
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.R
-import pl.edu.pwr.mateusznowak.lab1.swim_lab2.adapters.MovieRecyclerViewAdapter
+import pl.edu.pwr.mateusznowak.lab1.swim_lab2.adapters.MoviesRecyclerViewAdapter
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.listeners.RecyclerTouchListener
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.MoviesApp
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.helpers.BaseItemTouchHelperCallback
@@ -26,7 +26,7 @@ class MoviesActivity : AppCompatActivity() {
     @Inject
     lateinit var moviesHelper:MoviesHelper
 
-    lateinit private var moviesAdapter: MovieRecyclerViewAdapter
+    lateinit private var moviesAdapter: MoviesRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class MoviesActivity : AppCompatActivity() {
 
     private fun initDaggerDependencyInjection() {
         MoviesApp.moviesComponent.inject(this)
-        moviesAdapter = MovieRecyclerViewAdapter(moviesHelper.moviesList)
+        moviesAdapter = MoviesRecyclerViewAdapter(moviesHelper.moviesList)
     }
 
     private fun initMoviesRecyclerView() {

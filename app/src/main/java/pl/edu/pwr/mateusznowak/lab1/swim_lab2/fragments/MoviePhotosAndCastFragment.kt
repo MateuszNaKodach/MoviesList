@@ -10,12 +10,22 @@ import android.view.ViewGroup
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.R
 
 
-class MoviePhotosAndCastFragment : Fragment() {
+class MoviePhotosAndCastFragment : MovieInfoFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_movie_photos_and_cast, container, false)
+        return getFragmentView(inflater,container,savedInstanceState,R.layout.fragment_movie_photos_and_cast);
     }
 
+    override fun initUserInterface() {
+        initMoviePhotosFragment()
+    }
+
+    private fun initMoviePhotosFragment() {
+        val photosFragment = MovieInfoFragment.newInstance(MoviePhotosFragment::class.java,movie!!.title)
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.fr_moviePhotos, photosFragment)
+        transaction.commit()
+    }
 }

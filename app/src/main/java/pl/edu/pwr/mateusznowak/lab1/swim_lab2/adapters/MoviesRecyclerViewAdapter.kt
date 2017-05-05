@@ -14,8 +14,8 @@ import pl.edu.pwr.mateusznowak.lab1.swim_lab2.models.Movie
 /**
  * Created by Mateusz on 17.04.2017.
  */
-class MovieRecyclerViewAdapter(val moviesList:MutableList<Movie>) :
-        RecyclerView.Adapter<MovieRecyclerViewAdapter.MovieViewHolder>(),
+class MoviesRecyclerViewAdapter(val moviesList:MutableList<Movie>) :
+        RecyclerView.Adapter<MoviesRecyclerViewAdapter.MovieViewHolder>(),
         ItemTouchHelperAdapter {
 
     companion object{

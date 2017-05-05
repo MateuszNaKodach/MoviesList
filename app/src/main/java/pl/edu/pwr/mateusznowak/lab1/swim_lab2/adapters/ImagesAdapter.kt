@@ -5,9 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.ImageView
+import android.widget.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_list_row_left.view.*
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.R
@@ -22,9 +20,8 @@ class ImagesAdapter(val imagesUrls:List<String>):BaseAdapter() {
         val imageView: ImageView
         if (convertView == null) {
             imageView = ImageView(parent?.context)
-            imageView.layoutParams = ViewGroup.LayoutParams(85,85)
+            imageView.layoutParams = AbsListView.LayoutParams(GridLayout.LayoutParams.MATCH_PARENT/3, GridLayout.LayoutParams.MATCH_PARENT/3)
             imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-            imageView.setPadding(8, 8, 8, 8)
         } else {
             imageView = convertView as ImageView
         }

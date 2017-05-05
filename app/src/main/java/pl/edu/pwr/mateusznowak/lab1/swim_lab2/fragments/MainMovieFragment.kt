@@ -12,23 +12,15 @@ import kotlinx.android.synthetic.main.fragment_main_movie_info.*
 import pl.edu.pwr.mateusznowak.lab1.swim_lab2.R
 
 
-class MainMovieInfoFragment : MovieInfoFragment() {
+class MainMovieFragment : MovieInfoFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_main_movie_info, container, false)
-        initDaggerDependencyInjection()
-        receiveMovieData()
-        return view
+        return getFragmentView(inflater,container,savedInstanceState,R.layout.fragment_main_movie_info)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initUserInterface()
-    }
-
-    private fun initUserInterface(){
+    override fun initUserInterface(){
         initMoviePoster()
         initMovieDescription()
     }
@@ -42,6 +34,9 @@ class MainMovieInfoFragment : MovieInfoFragment() {
 
     private fun initMovieDescription(){
         tv_description.text = movie?.plot
+        tv_year.text = movie?.year
+        tv_genre.text = movie?.genre
+        tv_director.text = movie?.director
     }
 
 
