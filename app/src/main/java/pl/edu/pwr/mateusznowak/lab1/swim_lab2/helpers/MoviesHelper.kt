@@ -46,5 +46,13 @@ class MoviesHelper{
                 "https://s.aolcdn.com/hss/storage/midas/d07f8419800faacf4ed586ccfb5d6812/203345880/image.jpg",
                 "http://www.kulturalnaplaneta.pl/wp-content/uploads/2016/01/rendition1.img_-1.jpg")
 
+    val dummyActorsNames = Arrays.asList(
+            "Mark Hamill",
+            "Carie Fisher",
+            "Harrison Ford",
+            "Anthony Daniels",
+            "Peter Mayhew",
+            "Ewan McGregor"
+    )
 
 }

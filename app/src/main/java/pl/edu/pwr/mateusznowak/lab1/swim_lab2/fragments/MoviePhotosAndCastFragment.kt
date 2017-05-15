@@ -20,6 +20,7 @@ class MoviePhotosAndCastFragment : MovieInfoFragment() {
 
     override fun initUserInterface() {
         initMoviePhotosFragment()
+        initMovieCastFragment()
     }
 
     private fun initMoviePhotosFragment() {
@@ -28,4 +29,12 @@ class MoviePhotosAndCastFragment : MovieInfoFragment() {
         transaction.replace(R.id.fr_moviePhotos, photosFragment)
         transaction.commit()
     }
+
+    private fun initMovieCastFragment() {
+        val photosFragment = MovieInfoFragment.newInstance(MovieCastFragment::class.java, movie!!.title)
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.fr_movieCast, photosFragment)
+        transaction.commit()
+    }
+
 }
